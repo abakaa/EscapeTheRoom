@@ -1,2 +1,2 @@
-# EscapeTheRoom
-A 3D escape game using Unreal Game Engine
+# Escape The Room
+A 3D escaping puzzle game using Unreal Game Engine
