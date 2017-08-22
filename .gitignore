@@ -3,5 +3,8 @@
 */Binaries
 */Saved
 */DerivedDataCache
+**/xcuserdata
+contents.xcworkspacedata
+
 
 EscapeTheRoom/Content/StarterContent
