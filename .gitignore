@@ -7,4 +7,11 @@
 contents.xcworkspacedata
 
 
-EscapeTheRoom/Content/StarterContent
+EscapeTheRoom/Content/StarterContent/Textures
+EscapeTheRoom/Content/StarterContent/HDRI
+EscapeTheRoom/Content/StarterContent/Maps
+EscapeTheRoom/Content/StarterContent/Audio
+EscapeTheRoom/Content/StarterContent/Materials
+EscapeTheRoom/Content/StarterContent/Shapes
+EscapeTheRoom/Content/StarterContent/Architecture
+EscapeTheRoom/Content/StarterContent/Blueprints
