@@ -15,14 +15,36 @@ UGrabber::UGrabber()
 	// ...
 }
 
+void UGrabber::Grab(){
+    UE_LOG(LogTemp, Warning, TEXT("Grabbed"))
+}
+
+void UGrabber::Release(){
+    UE_LOG(LogTemp, Warning, TEXT("Released"))
+}
 
 // Called when the game starts
 void UGrabber::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// ...
-	
+    AActor* owner = GetOwner();
+    _physicsHandle = owner->FindComponentByClass<UPhysicsHandleComponent>();
+    if(_physicsHandle){
+        
+    }
+    else{
+        UE_LOG(LogTemp, Error, TEXT("%s named object does not have physics handle."), *owner->GetName())
+    }
+    
+    _inputComponent = owner->FindComponentByClass<UInputComponent>();
+    if(_inputComponent){
+        _inputComponent->BindAction("Grab", EInputEvent::IE_Pressed, this, &UGrabber::Grab);
+        _inputComponent->BindAction("Grab", EInputEvent::IE_Released, this, &UGrabber::Release);
+    }
+    else{
+        UE_LOG(LogTemp, Error, TEXT("%s named object does not have input component."), *owner->GetName())
+    }
 }
 
 
@@ -37,7 +59,7 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
     world->GetFirstPlayerController()->GetPlayerViewPoint(OUT location, OUT rotation);
     
     ///Logging
-    UE_LOG(LogTemp, Display, TEXT("Position : %s\nDirection : %s"), *location.ToString(), *rotation.ToString());
+    //UE_LOG(LogTemp, Display, TEXT("Position : %s\nDirection : %s"), *location.ToString(), *rotation.ToString());
     
     ///Draw a red line
     FVector lineTraceEnd = location + rotation.Vector() * _reach;

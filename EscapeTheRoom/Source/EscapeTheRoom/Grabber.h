@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "PhysicsEngine/PhysicsHandleComponent.h"
+#include "Components/InputComponent.h"
 #include "Grabber.generated.h"
 
 
@@ -26,5 +28,9 @@ public:
 
 private:
     float _reach = 100.f;
-	
+    UPhysicsHandleComponent* _physicsHandle = nullptr;
+    UInputComponent* _inputComponent = nullptr;
+    
+    void Grab();
+    void Release();
 };
