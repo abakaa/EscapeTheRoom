@@ -33,4 +33,14 @@ private:
     
     void Grab();
     void Release();
+    
+    //Setup input component
+    void SetupInputComponent();
+    
+    void FindPhysicsHandleComponent();
+    
+    //Return hit for the first physics body in reach
+    const FHitResult GetFirstPhysicsBodyInReach();
+    FVector GetLineTraceStart();
+    FVector GetLineTraceEnd();
 };
