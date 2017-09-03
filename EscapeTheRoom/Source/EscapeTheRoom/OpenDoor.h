@@ -36,9 +36,11 @@ private:
     float _doorCloseDelay = 1.f;
     
     float _lastOpenDoorTime;
+    float _minPressure = 20.f;
     
-    AActor* _actorThatOpens;
     AActor* _owner; //the owning door
     void OpenDoor();
     void CloseDoor();
+    
+    float GetTotalMassOnPressurePlate();
 };
