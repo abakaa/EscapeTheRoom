@@ -42,10 +42,7 @@ void UGrabber::Release(){
 void UGrabber::FindPhysicsHandleComponent(){
     AActor* owner = GetOwner();
     _physicsHandle = owner->FindComponentByClass<UPhysicsHandleComponent>();
-    if(_physicsHandle){
-        
-    }
-    else{
+    if(!_physicsHandle){
         UE_LOG(LogTemp, Error, TEXT("%s named object does not have physics handle."), *owner->GetName())
     }
 }

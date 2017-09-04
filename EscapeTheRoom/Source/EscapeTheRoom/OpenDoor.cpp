@@ -26,11 +26,7 @@ void UOpenDoor::BeginPlay()
 }
 
 void UOpenDoor::OpenDoor(){
-    AActor* owner = GetOwner();
-    //auto rotation = owner->GetTransform().GetRotation();
-    FRotator rotator = FRotator(0.f, 75.f, 0.f);
-    
-    owner->SetActorRotation(rotator);
+    OpenRequested.Broadcast();
 }
 
 void UOpenDoor::CloseDoor(){
