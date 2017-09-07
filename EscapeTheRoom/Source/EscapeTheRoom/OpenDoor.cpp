@@ -25,17 +25,6 @@ void UOpenDoor::BeginPlay()
     _owner = GetOwner();
 }
 
-void UOpenDoor::OpenDoor(){
-    OpenRequested.Broadcast();
-}
-
-void UOpenDoor::CloseDoor(){
-    AActor* owner = GetOwner();
-    FRotator rotator = FRotator(0.f, 0.f, 0.f);
-    
-    owner->SetActorRotation(rotator);
-}
-
 float UOpenDoor::GetTotalMassOnPressurePlate(){
     float totalMass = 0.f;
     
@@ -58,12 +47,10 @@ void UOpenDoor::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompon
     UWorld* world = GetWorld();
     
     if(GetTotalMassOnPressurePlate() >= _minPressure){
-        OpenDoor();
-        _lastOpenDoorTime = world->GetTimeSeconds();
+        OnOpen.Broadcast();
     }
-    
-    if(world->GetTimeSeconds() - _lastOpenDoorTime > _doorCloseDelay){
-        CloseDoor();
+    else{
+        OnClose.Broadcast();
     }
 }
 
